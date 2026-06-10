@@ -118,6 +118,7 @@ class ArxivRetriever(BaseRetriever):
         query = '+'.join(self.config.source.arxiv.category)
         include_cross_list = self.config.source.arxiv.get("include_cross_list", False)
         # Get the latest paper from arxiv rss feed
+        query = 'cs.AI+cs.CV+cs.LG+cs.CL+cs.RO'
         feed = feedparser.parse(f"https://rss.arxiv.org/atom/{query}")
         if 'Feed error for query' in feed.feed.title:
             raise Exception(f"Invalid ARXIV_QUERY: {query}.")
